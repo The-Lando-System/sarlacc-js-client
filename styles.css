@@ -1,0 +1,25 @@
+.main {
+  margin-left: 20px;
+  margin-top: 70px;
+}
+
+.modal-spinner {
+  margin-left: 60px;
+}
+
+.modal-dialog {
+  width: 400px;
+}
+
+.modal-header {
+  padding:9px 15px;
+  border-bottom:1px solid #eee;
+  background-color: #61bfb7;
+  color: white;
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  -moz-border-radius-topright: 4px;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+}

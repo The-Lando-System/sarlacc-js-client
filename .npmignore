@@ -1,0 +1,11 @@
+app
+node_modules
+typings/**
+typings
+favicon.ico
+Gruntfile.js
+index.html
+system.config.js
+styles.css
+tsconfig.json
+typings.json
