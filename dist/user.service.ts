@@ -32,7 +32,7 @@ export class UserService {
 
 
   // Public Methods ================================================
-  private returnUser(): Promise<any> {
+  private returnUser(): Promise<User> {
 
     this.logger.info(this.TAG + 'Initializing the user service');
 
@@ -40,7 +40,7 @@ export class UserService {
 
       if (this.token && this.user){
         this.logger.debug(this.TAG + 'User and token are already set.');
-        resolve();
+        resolve(this.user);
       }
 
       this.token = this.getTokenFromCookie();
@@ -51,7 +51,7 @@ export class UserService {
         .then((user:User) => {
           this.logger.info(this.TAG + 'Intialization completed... User and token are both set');
           this.user = user;
-          resolve();
+          resolve(this.user);
         }).catch((error:any) => {
           this.logout();
           this.logger.info(this.TAG + 'Initialization complete. No user logged in');
