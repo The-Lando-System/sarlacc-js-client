@@ -32,7 +32,7 @@ export class UserService {
 
 
   // Public Methods ================================================
-  private returnUser(): Promise<User> {
+  returnUser(): Promise<User> {
 
     this.logger.info(this.TAG + 'Initializing the user service');
 
