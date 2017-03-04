@@ -20,8 +20,6 @@ export class UserService {
   private token: Token;
   private user: User;
 
-  private initPromise: Promise<any> = this.initialize();
-
   public LOGIN_BCAST = 'LOGIN';
   public LOGOUT_BCAST = 'LOGOUT';
   
@@ -32,13 +30,18 @@ export class UserService {
     private broadcaster: Broadcaster
   ){}
 
-  // Initialization ================================================
 
-  private initialize(): Promise<any> {
+  // Public Methods ================================================
+  private returnUser(): Promise<any> {
 
     this.logger.info(this.TAG + 'Initializing the user service');
 
     return new Promise((resolve, reject) => {
+
+      if (this.token && this.user){
+        this.logger.debug(this.TAG + 'User and token are already set.');
+        resolve();
+      }
 
       this.token = this.getTokenFromCookie();
 
@@ -59,12 +62,6 @@ export class UserService {
         reject();
       }
     });
-  }
-
-  // Public Methods ================================================
-
-  checkIfUserIsLoggedIn(): Promise<any> {
-    return this.initPromise;
   }
 
   login(creds: any): Promise<User> {
@@ -106,10 +103,6 @@ export class UserService {
     this.token = null;
     this.user = null;
     this.broadcastLogout('User has logged out!');
-  }
-
-  getUser(): User {
-    return this.user;
   }
 
   getToken(): Token {
